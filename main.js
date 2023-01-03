@@ -4,6 +4,7 @@ import './style.css'
 
 const colorPicker = $('#color__picker')
 const colorList = $('.all__colors')
+const clearAll = $('.clear__all')
 
 const copyColor = el => {
     navigator.clipboard.writeText(el.dataset.color)
@@ -34,6 +35,12 @@ $$('.color').forEach(li => {
     li.addEventListener('click', e => copyColor(e.currentTarget.lastElementChild))
 })
 
+// Eliminando los colores guardados en el localstorage
+const clearAllColors = () => {
+    pickedColors.length = 0
+    localStorage.setItem('picked__colors', JSON.stringify(pickedColors))
+}
+
 const activateEyeDropper = async () => {
     try {
         // Creamos la propiedad EyeDropper para que se nos abra la herramienta de selección
@@ -62,6 +69,7 @@ const activateEyeDropper = async () => {
     }
 }
 
-colorPicker.addEventListener("click", activateEyeDropper)
+colorPicker.addEventListener('click', activateEyeDropper)
+clearAll.addEventListener('click', clearAllColors)
 
 $('#app')
