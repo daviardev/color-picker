@@ -34,14 +34,18 @@ const activateEyeDropper = async () => {
         // Se pasa el valor hexadecimal al portapapeles
         navigator.clipboard.writeText(sRGBHex)
 
-        // Agrega el valor hexadecimal a los colores que fueron seleccionados dentro de un array
-        pickedColors.push(sRGBHex)
+        // Sí el color ya existe, no se agrega
+        if (!pickedColors.includes(sRGBHex)) {
+            // Agrega el valor hexadecimal a los colores que fueron seleccionados dentro de un array
+            pickedColors.push(sRGBHex)
 
-        // Se guarda el valor hexadecimal en el localstorage para que el usuario tenga acceso a ellos
-        // de una forma más sencilla.
-        localStorage.setItem('picked__colors', JSON.stringify(pickedColors))
+            // Se guarda el valor hexadecimal en el localstorage para que el usuario tenga acceso a ellos
+            // de una forma más sencilla.
+            localStorage.setItem('picked__colors', JSON.stringify(pickedColors))
 
-        showColors()
+            showColors()
+        }
+
     } catch (err) {
         console.error(err)
     }
