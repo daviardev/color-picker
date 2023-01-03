@@ -12,13 +12,16 @@ const pickedColors = JSON.parse(localStorage.getItem('picked__colors') || '[]')
 const showColors = () => {
     colorList.innerHTML = pickedColors.map(color => `
         <li class="color">
-            <span class="rect"></span>
+            <span class="rect"
+                style="background: ${color}; border: 1px solid ${color === '#ffffff' ? '#ccc' : color}"></span>
             <span class="value">${color}</span>
         </li>
         `)
         // Generando la lista con los colores seleccionados para añadirlos al cuerpo de los colores
         .join('')
 }
+
+showColors()
 
 const activateEyeDropper = async () => {
     try {
