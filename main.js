@@ -6,6 +6,8 @@ const colorPicker = $('#color__picker')
 const colorList = $('.all__colors')
 const clearAll = $('.clear__all')
 
+
+// Cuando se copia el color deseado, se activa un texto por un tiempo y luego desaparece
 const copyColor = el => {
     navigator.clipboard.writeText(el.dataset.color)
     el.innerText = 'copiado'
@@ -17,6 +19,7 @@ const pickedColors = JSON.parse(localStorage.getItem('picked__colors') || '[]')
 
 // Mostramos los colores según sean seleccionados
 const showColors = () => {
+    if (!pickedColors.length) return
     colorList.innerHTML = pickedColors.map(color => `
         <li class="color">
             <span class="rect"
@@ -26,6 +29,8 @@ const showColors = () => {
         `)
         // Generando la lista con los colores seleccionados para añadirlos al cuerpo de los colores
         .join('')
+
+        $('.picked__colors').classList.remove('hidden')
 }
 
 showColors()
@@ -39,6 +44,7 @@ $$('.color').forEach(li => {
 const clearAllColors = () => {
     pickedColors.length = 0
     localStorage.setItem('picked__colors', JSON.stringify(pickedColors))
+    $('.picked__colors').classList.add('hidden')
 }
 
 const activateEyeDropper = async () => {
@@ -69,6 +75,7 @@ const activateEyeDropper = async () => {
     }
 }
 
+// Eventos de click
 colorPicker.addEventListener('click', activateEyeDropper)
 clearAll.addEventListener('click', clearAllColors)
 
