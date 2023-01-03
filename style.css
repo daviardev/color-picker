@@ -49,6 +49,10 @@ body {
   margin: 10px 15px;
 }
 
+.picked__colors.hidden {
+  display: none;
+}
+
 .picked__colors header {
   justify-content: space-between;
 }
