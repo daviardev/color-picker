@@ -1,6 +1,5 @@
-import { $, $$ } from './utils/dom'
-
-import './style.css'
+const $ = selector => document.querySelector(selector)
+const $$ = selector => document.querySelectorAll(selector)
 
 const colorPicker = $('#color__picker')
 const colorList = $('.all__colors')
@@ -78,5 +77,3 @@ const activateEyeDropper = async () => {
 // Eventos de click
 colorPicker.addEventListener('click', activateEyeDropper)
 clearAll.addEventListener('click', clearAllColors)
-
-$('#app')
