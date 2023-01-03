@@ -31,15 +31,15 @@ const showColors = () => {
         .join('')
 
     $('.picked__colors').classList.remove('hidden')
+
+    // Añadir un evento al dar clic para copiar el elemento deseado
+    $$('.color').forEach(li => {
+        li.addEventListener('click', e => copyColor(e.currentTarget.lastElementChild))
+    })
+
 }
 
 showColors()
-
-// Añadir un evento al dar clic para copiar el elemento deseado
-$$('.color').forEach(li => {
-    li.addEventListener('click', e => copyColor(e.currentTarget.lastElementChild))
-})
-
 // Eliminando los colores guardados en el localstorage
 const clearAllColors = () => {
     pickedColors.length = 0
