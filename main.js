@@ -30,7 +30,7 @@ const showColors = () => {
         // Generando la lista con los colores seleccionados para añadirlos al cuerpo de los colores
         .join('')
 
-        $('.picked__colors').classList.remove('hidden')
+    $('.picked__colors').classList.remove('hidden')
 }
 
 showColors()
